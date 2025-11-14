@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{70C14F65-57EE-44A4-B6AE-A5997E4C09AB}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AnimesAPI/Controllers/AnimesAPI.cs">
+    <Files>
+      <File FileName="AnimesAPI/Controllers/AnimesAPI.cs" Line="102" Column="1" />
+      <File FileName="AnimesAPI/Data/AppDbContext.cs" Line="18" Column="1" />
+      <File FileName="AnimesAPI/Models/Animes.cs" Line="4" Column="10" />
+      <File FileName="AnimesAPI/Program.cs" Line="15" Column="27" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AnimesAPI" expanded="True">
+            <Node name="AnimesAPI" expanded="True" selected="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.AnimesAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+</Properties>
