@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimesAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251114195945_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251115092453_MakeSecretNullable")]
+    partial class MakeSecretNullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace AnimesAPI.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Secret")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

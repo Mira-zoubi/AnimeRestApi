@@ -18,7 +18,7 @@ namespace AnimesAPI.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<AnimesDTO> GetAnimes()
+        public  ActionResult<IEnumerable<AnimesDTO>> GetAnimes()
         {
             var allList = _context.Animes.ToList();
             var DTOList= new List<AnimesDTO>();

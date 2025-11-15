@@ -17,7 +17,8 @@ namespace AnimesAPI.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Genre = table.Column<string>(type: "TEXT", nullable: true)
+                    Genre = table.Column<string>(type: "TEXT", nullable: true),
+                    Secret = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
