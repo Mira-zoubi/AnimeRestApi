@@ -18,10 +18,23 @@ namespace AnimesAPI.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult GetAnimes()
+        public ActionResult<AnimesDTO> GetAnimes()
         {
             var allList = _context.Animes.ToList();
-            return Ok(allList);
+            var DTOList= new List<AnimesDTO>();
+
+            foreach (var x in allList)
+            {
+              AnimesDTO d1=(new AnimesDTO
+                {
+                    Name = x.Name,
+                    Genre = x.Genre
+
+                });
+                DTOList.Add(d1);
+            }
+
+            return Ok(DTOList);
         }
 
 
@@ -29,7 +42,7 @@ namespace AnimesAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetAnimesById(int id)
+        public ActionResult<AnimesDTO> GetAnimesById(int id)
         {
             if (id == 0)
                 return BadRequest();
@@ -39,31 +52,40 @@ namespace AnimesAPI.Controllers
             if (targetRecord == null)
                 return NotFound();
 
-            return Ok(targetRecord);
+            AnimesDTO d1 = new AnimesDTO
+            {
+                Name = targetRecord.Name,
+                Genre = targetRecord.Genre
+            };
+            return Ok(d1);
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult CreateAnime([FromBody] Animes animes)
+        public ActionResult<AnimesDTO> CreateAnime([FromBody] AnimesDTO animesDTO)
         {
-            if (animes == null)
+            if (animesDTO == null)
                 return BadRequest();
 
-            _context.Animes.Add(animes);
+            Animes a1 = new Animes
+            {
+                Name = animesDTO.Name,
+                Genre = animesDTO.Genre
+            };
+
+            _context.Animes.Add(a1);
             _context.SaveChanges();
 
-            return CreatedAtAction(nameof(GetAnimesById),
-                new { id = animes.Id },
-                animes);
+            return CreatedAtAction(nameof(GetAnimesById), new { id = a1.Id }, animesDTO);
         }
 
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UpdateAnime(int id, [FromBody] Animes animes)
+        public IActionResult UpdateAnime(int id, [FromBody] AnimesDTO animesDTO)
         {
-            if (animes == null || id == 0)
+            if (animesDTO == null || id == 0)
                 return BadRequest();
 
             var targetRecord = _context.Animes.Find(id);
@@ -71,8 +93,9 @@ namespace AnimesAPI.Controllers
             if (targetRecord == null)
                 return NotFound();
 
-            targetRecord.Name = animes.Name;
-            targetRecord.Genre = animes.Genre;
+
+            targetRecord.Name = animesDTO.Name;
+            targetRecord.Genre = animesDTO.Genre;
 
             _context.SaveChanges();
             return NoContent();

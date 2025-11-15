@@ -10,6 +10,7 @@ namespace AnimesAPI.Models
         [Required]
         public String Name { set; get; }
         public String ?Genre { set; get; }
+         public String Secret { set; get; }
     }
 }
 
